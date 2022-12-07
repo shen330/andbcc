@@ -24,7 +24,7 @@
 # 18-Oct-2016      "      "     Updated for bcc use.
 
 tracing=/sys/kernel/debug/tracing
-if [ !-d $tracing ]; then
+if [ ! -d $tracing ]; then
 	tracing=/sys/kernel/tracing
 fi
 opt_force=0; opt_verbose=0; opt_quiet=0
