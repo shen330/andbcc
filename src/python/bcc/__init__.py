@@ -689,7 +689,7 @@ class BPF(object):
 
     @staticmethod
     def get_kprobe_functions(event_re):
-        blacklist_file = "%s/kprobes/blacklist" % DEBUGFS
+        blacklist_file = "%s/kprobes/blacklist" % TRACEFS
         try:
             with open(blacklist_file, "rb") as blacklist_f:
                 blacklist = set([line.rstrip().split()[1] for line in blacklist_f])

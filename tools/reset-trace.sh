@@ -15,7 +15,7 @@
 #
 # USAGE: ./reset-trace [-Fhqv]
 #
-# REQUIREMENTS: debugfs mounted on /sys/kernel/debug
+# REQUIREMENTS: debugfs mounted on /sys/kernel/debug or tracefs mounted on /sys/kernel/tracing
 #
 # COPYRIGHT: Copyright (c) 2016 Brendan Gregg.
 # Licensed under the Apache License, Version 2.0 (the "License")
@@ -24,6 +24,9 @@
 # 18-Oct-2016      "      "     Updated for bcc use.
 
 tracing=/sys/kernel/debug/tracing
+if [ !-d $tracing ]; then
+	tracing=/sys/kernel/tracing
+fi
 opt_force=0; opt_verbose=0; opt_quiet=0
 
 function usage {
