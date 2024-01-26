@@ -1072,7 +1072,7 @@ bool kprobe_exists(const char *name)
 	FILE *f;
 	int ret;
 
-	f = fopen("/sys/kernel/debug/tracing/available_filter_functions", "r");
+	f = fopen("/sys/kernel/tracing/available_filter_functions", "r");
 	if (!f)
 		goto slow_path;
 
@@ -1120,7 +1120,7 @@ bool tracepoint_exists(const char *category, const char *event)
 {
 	char path[PATH_MAX];
 
-	snprintf(path, sizeof(path), "/sys/kernel/debug/tracing/events/%s/%s/format", category, event);
+	snprintf(path, sizeof(path), "/sys/kernel/tracing/events/%s/%s/format", category, event);
 	if (!access(path, F_OK))
 		return true;
 	return false;
